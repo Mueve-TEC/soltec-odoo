@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   web:
-    image: odoo:16 
+    image: muevetec/soltec-odoo:1.0
     deploy:
       restart_policy:
         condition: on-failure

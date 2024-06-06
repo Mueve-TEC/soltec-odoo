@@ -1,7 +1,7 @@
 FROM odoo:16
 
-#COPY --chown=odoo:odoo ./modules_from_github /mnt/extra-addons
-#COPY --chown=odoo:odoo transport.py /var/lib/odoo/.local/lib/python3.9/site-packages/pysimplesoap/transport.py
+COPY --chown=odoo:odoo ./modules_from_github /mnt/extra-addons
+COPY --chown=odoo:odoo transport.py /var/lib/odoo/.local/lib/python3.9/site-packages/pysimplesoap/transport.py
 
 USER root
 RUN apt-get update && apt-get install git -y
