@@ -1,0 +1,60 @@
+version: '3.1'
+services:
+  web:
+    image: odoo:16 
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+      replicas: 1    
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2048M
+        reservations:
+          cpus: '1'
+          memory: 1024M
+    depends_on:
+      - mydb
+    ports:
+      - "8069:8069"
+    environment:
+      - HOST=mydb
+      - USER=odoo
+      - PASSWORD_FILE=/run/secrets/postgresql_password
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+    secrets:
+      - postgresql_password
+
+  mydb:
+    image: postgres:15
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+      replicas: 1    
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2048M
+        reservations:
+          cpus: '1'
+          memory: 1024M
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD_FILE=/run/secrets/postgresql_password
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-mydb-data:/var/lib/postgresql/data/pgdata
+    secrets:
+      - postgresql_password
+
+volumes:
+  odoo-web-data:
+  odoo-mydb-data:
+
+secrets:
+  postgresql_password:
+    file: odoo_pg_pass

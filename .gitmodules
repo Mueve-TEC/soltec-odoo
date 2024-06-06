@@ -1,0 +1,9 @@
+[submodule "submodules/odoo-argentina"]
+	path = submodules/odoo-argentina
+	url = git@github.com:a2systems/odoo-argentina.git
+[submodule "submodules/account-payment"]
+	path = submodules/account-payment
+	url = git@github.com:ingadhoc/account-payment.git
+[submodule "submodules/account-financial-tools"]
+	path = submodules/account-financial-tools
+	url = git@github.com:ingadhoc/account-financial-tools.git
