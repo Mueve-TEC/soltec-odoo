@@ -13,7 +13,3 @@
 	path = submodules/vertical-association
 	url = https://github.com/OCA/vertical-association.git
 	branch = 16.0
-[submodule "submodules/--force"]
-	path = submodules/--force
-	url = https://github.com/OCA/bank-statement-import.git
-	branch = 16.0
