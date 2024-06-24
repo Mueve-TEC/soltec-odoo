@@ -25,19 +25,19 @@ if [ ! -d "$REPO_PATH_AP" ]; then
     exit 1
 fi
 if [ ! -d "$REPO_PATH_RECONCILE" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_AP' no existe."
+    echo "Error: El directorio del repositorio '$REPO_PATH_RECONCILE' no existe."
     exit 1
 fi
 if [ ! -d "$REPO_PATH_IMPORT_BANK" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_AP' no existe."
+    echo "Error: El directorio del repositorio '$REPO_PATH_IMPORT_BANK' no existe."
     exit 1
 fi
 if [ ! -d "$REPO_PATH_ODOO_MATES" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_AP' no existe."
+    echo "Error: El directorio del repositorio '$REPO_PATH_ODOO_MATES' no existe."
     exit 1
 fi
 if [ ! -d "$REPO_PATH_MEMBER" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_AP' no existe."
+    echo "Error: El directorio del repositorio '$REPO_PATH_MEMBER' no existe."
     exit 1
 fi
 # Crear el directorio de destino si no existe

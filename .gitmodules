@@ -1,6 +1,7 @@
 [submodule "submodules/odoo-argentina"]
 	path = submodules/odoo-argentina
-	url = git@github.com:a2systems/odoo-argentina.git
+	url = https://github.com/a2systems/odoo-argentina.git
+	branch = 16.0
 [submodule "submodules/account-reconcile"]
 	path = submodules/account-reconcile
 	url = https://github.com/OCA/account-reconcile.git
