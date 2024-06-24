@@ -22,9 +22,15 @@ Nos interesan los módulos:
 
 ## Factura electrónica
 
-https://github.com/a2systems/odoo-argentina.git
+> `git submodule add -b 16.0 https://github.com/a2systems/odoo-argentina.git`
 
 Se sigue el instuctivo de <https://a2systems.co/blog/blog-2/instalacion-de-la-localizacion-argentina-odoo16-5>
+
+
+Tambén se instalan las dependencias
+
+> `git submodule add -b 16.0 https://github.com/ingadhoc/account-financial-tools.git`
+
 
 ## Conciliación bancaria
 
@@ -77,6 +83,11 @@ https://github.com/OCA/vertical-association/tree/16.0/membership_extension
 Para incorporar este módulo es necesario traer todo el repo, pero sólo nos interesa el módulo
 
 - membership_extension
+
+Para incorporar todo el módulo 
+
+> `git submodule add -b 16.0 https://github.com/OCA/vertical-association.git`
+
 
 # Apéndice: Utilización de submódulos
 
