@@ -1,12 +1,6 @@
 [submodule "submodules/odoo-argentina"]
 	path = submodules/odoo-argentina
 	url = git@github.com:a2systems/odoo-argentina.git
-[submodule "submodules/account-payment"]
-	path = submodules/account-payment
-	url = git@github.com:ingadhoc/account-payment.git
-[submodule "submodules/account-financial-tools"]
-	path = submodules/account-financial-tools
-	url = git@github.com:ingadhoc/account-financial-tools.git
 [submodule "submodules/account-reconcile"]
 	path = submodules/account-reconcile
 	url = https://github.com/OCA/account-reconcile.git
@@ -15,11 +9,11 @@
 	path = submodules/odooapps
 	url = https://github.com/odoomates/odooapps.git
 	branch = 16.0
-[submodule "submodules/bank-statement-import"]
-	path = submodules/bank-statement-import
-	url = https://github.com/OCA/bank-statement-import.git
-	branch = 16.0
 [submodule "submodules/vertical-association"]
 	path = submodules/vertical-association
 	url = https://github.com/OCA/vertical-association.git
+	branch = 16.0
+[submodule "submodules/--force"]
+	path = submodules/--force
+	url = https://github.com/OCA/bank-statement-import.git
 	branch = 16.0
