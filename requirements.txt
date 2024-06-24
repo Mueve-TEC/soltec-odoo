@@ -5,3 +5,11 @@ git+https://github.com/reingart/pyafipws@py3k
 py3o.template
 py3o.formats
 
+# Requerimientos para account-reconcile
+xlrd
+
+# Requerimientos para bank-statement-import, ademas del anterior
+chardet
+ofxparse
+ofxtools
+
