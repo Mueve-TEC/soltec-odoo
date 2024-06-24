@@ -13,3 +13,15 @@
 	path = submodules/vertical-association
 	url = https://github.com/OCA/vertical-association.git
 	branch = 16.0
+[submodule "submodules/account-financial-tools"]
+	path = submodules/account-financial-tools
+	url = https://github.com/ingadhoc/account-financial-tools.git
+	branch = 16.0
+[submodule "submodules/account-payment"]
+	path = submodules/account-payment
+	url = https://github.com/ingadhoc/account-payment.git
+	branch = 16.0
+[submodule "submodules/bank-statement-import"]
+	path = submodules/bank-statement-import
+	url = https://github.com/OCA/bank-statement-import.git
+	branch = 16.0

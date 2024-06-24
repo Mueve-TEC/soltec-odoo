@@ -31,6 +31,7 @@ Tambén se instalan las dependencias
 
 > `git submodule add -b 16.0 https://github.com/ingadhoc/account-financial-tools.git`
 
+> `git submodule add -b 16.0 https://github.com/ingadhoc/account-payment.git`
 
 ## Conciliación bancaria
 
