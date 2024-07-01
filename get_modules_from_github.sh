@@ -8,6 +8,7 @@ REPO_PATH_RECONCILE=./submodules/account-reconcile
 REPO_PATH_IMPORT_BANK=./submodules/bank-statement-import
 REPO_PATH_ODOO_MATES=./submodules/odooapps
 REPO_PATH_MEMBER=./submodules/vertical-association
+REPO_PATH_REPORTING=./submodules/reporting-engine
 DEST_PATH=./modules_from_github
 EXCLUSION_FILE=./exclusion_list.txt
 
@@ -38,6 +39,10 @@ if [ ! -d "$REPO_PATH_ODOO_MATES" ]; then
 fi
 if [ ! -d "$REPO_PATH_MEMBER" ]; then
     echo "Error: El directorio del repositorio '$REPO_PATH_MEMBER' no existe."
+    exit 1
+fi
+if [ ! -d "$REPO_PATH_REPORTING" ]; then
+    echo "Error: El directorio del repositorio '$REPO_PATH_REPORTING' no existe."
     exit 1
 fi
 # Crear el directorio de destino si no existe
@@ -112,6 +117,14 @@ if [ $? -eq 0 ]; then
     echo "Directorios copiados exitosamente de '$REPO_PATH_OA' a '$DEST_PATH'."
 else
     echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_OA'."
+    exit 1
+fi
+
+rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_REPORTING"/ "$DEST_PATH"
+if [ $? -eq 0 ]; then
+    echo "Directorios copiados exitosamente de '$REPO_PATH_REPORTING' a '$DEST_PATH'."
+else
+    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_REPORTING'."
     exit 1
 fi
 

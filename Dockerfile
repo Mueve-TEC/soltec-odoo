@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install git -y
 RUN apt-get install python3-m2crypto -y
 RUN apt-get install python3-xlrd python3-chardet python3-ofxparse -y
 COPY openssl.cnf /etc/ssl/openssl.cnf
+COPY ir_actions_report_templates.xml /usr/lib/python3/dist-packages/odoo/addons/sale/report/ir_actions_report_templates.xml
 
 USER odoo
 COPY ./requirements.txt /var/lib/odoo/requirements.txt

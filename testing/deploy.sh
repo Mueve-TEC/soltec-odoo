@@ -2,7 +2,7 @@
 
 SWARM_FILE="./docker-compose.yml"
 STACK_NAME="odoo-stack-base-dev"
-REQUIRED_IMAGE="muevetec/soltec-odoo:1.0"
+REQUIRED_IMAGE="muevetec/soltec-odoo:1.0-dev"
 REQUIRED_PG_IMAGE="postgres:14"
 
 echo "Desplegando el stack: $STACK_NAME usando el archivo: $SWARM_FILE"
