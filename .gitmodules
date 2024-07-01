@@ -26,3 +26,7 @@
 	path = submodules/bank-statement-import
 	url = https://github.com/OCA/bank-statement-import.git
 	branch = 16.0
+[submodule "submodules/reporting-engine"]
+	path = submodules/reporting-engine
+	url = https://github.com/OCA/reporting-engine
+	branch = 16.0
