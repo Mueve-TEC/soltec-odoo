@@ -9,6 +9,10 @@ RUN apt-get install python3-m2crypto -y
 RUN apt-get install python3-xlrd python3-chardet python3-ofxparse -y
 COPY openssl.cnf /etc/ssl/openssl.cnf
 COPY ir_actions_report_templates.xml /usr/lib/python3/dist-packages/odoo/addons/sale/report/ir_actions_report_templates.xml
+COPY odoo.conf /etc/odoo/odoo.conf.mod
+RUN rm -f /etc/odoo/odoo.conf && \
+    mv /etc/odoo/odoo.conf.mod /etc/odoo/odoo.conf && \
+    chown odoo /etc/odoo/odoo.conf
 
 USER odoo
 COPY ./requirements.txt /var/lib/odoo/requirements.txt
