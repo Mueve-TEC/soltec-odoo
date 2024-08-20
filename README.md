@@ -13,8 +13,12 @@ La opción --recursive es para que traiga los submódulos
 ## Instrucciones para la generación de la imagen
 
 Se debe hacer uso del script `build.sh`. Es necesario adaptar las variables `IMAGENAME` Y `IMAGEVERSION` según el nombre y versión que se desee usar.
+Se provee un archivo de configuración `odoo.conf`, el cual contiene una contraseña de database manager seteada a "supersecurepassword". Este valor debe modificarse por una contraseña fuerte. 
+La razón de proveer este archivo con dicho parámetro sirve para que el mismo persista aunque la instancia eventualmente se reinicie. Si ud prefiere setear manualmente la contraseña del database manager, puede comentar (agregando un "#" al comienzo) la siguiente línea en el `Dockerfile`
 
-Una vez q se ejecuta el mismo:
+`COPY odoo.conf /etc/odoo/odoo.conf`
+
+Una vez q se ejecuta el script `build.sh`:
 
 > `./build.sh`
 
