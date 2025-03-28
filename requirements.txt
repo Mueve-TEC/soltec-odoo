@@ -13,3 +13,5 @@ chardet
 ofxparse
 ofxtools
 
+# Requerimiento para bill digitalization
+pytesseract

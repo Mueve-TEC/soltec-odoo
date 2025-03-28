@@ -4,3 +4,4 @@ setup
 .*
 LICENSE
 README.rst
+README.md

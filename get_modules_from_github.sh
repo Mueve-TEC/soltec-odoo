@@ -9,6 +9,8 @@ REPO_PATH_IMPORT_BANK=./submodules/bank-statement-import
 REPO_PATH_ODOO_MATES=./submodules/odooapps
 REPO_PATH_MEMBER=./submodules/vertical-association
 REPO_PATH_REPORTING=./submodules/reporting-engine
+REPO_PATH_UNION=./submodules/odoo-union
+REPO_PATH_HELPDESK=./submodules/helpdesk
 DEST_PATH=./modules_from_github
 EXCLUSION_FILE=./exclusion_list.txt
 
@@ -45,6 +47,16 @@ if [ ! -d "$REPO_PATH_REPORTING" ]; then
     echo "Error: El directorio del repositorio '$REPO_PATH_REPORTING' no existe."
     exit 1
 fi
+if [ ! -d "$REPO_PATH_UNION" ]; then
+    echo "Error: El directorio del repositorio '$REPO_PATH_UNION' no existe."
+    exit 1
+fi
+
+if [ ! -d "$REPO_PATH_HELPDESK" ]; then
+    echo "Error: El directorio del repositorio '$REPO_PATH_HELPDESK' no existe."
+    exit 1
+fi
+
 # Crear el directorio de destino si no existe
 if [ ! -d "$DEST_PATH" ]; then
     echo "El directorio de destino '$DEST_PATH' no existe. Creando..."
@@ -125,6 +137,22 @@ if [ $? -eq 0 ]; then
     echo "Directorios copiados exitosamente de '$REPO_PATH_REPORTING' a '$DEST_PATH'."
 else
     echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_REPORTING'."
+    exit 1
+fi
+
+rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_UNION"/ "$DEST_PATH"
+if [ $? -eq 0 ]; then
+    echo "Directorios copiados exitosamente de '$REPO_PATH_UNION' a '$DEST_PATH'."
+else
+    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_UNION'."
+    exit 1
+fi
+
+rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_HELPDESK"/ "$DEST_PATH"
+if [ $? -eq 0 ]; then
+    echo "Directorios copiados exitosamente de '$REPO_PATH_HELPDESK' a '$DEST_PATH'."
+else
+    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_HELPDESK'."
     exit 1
 fi
 
