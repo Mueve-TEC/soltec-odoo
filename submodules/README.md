@@ -89,6 +89,44 @@ Para incorporar todo el módulo
 
 > `git submodule add -b 16.0 https://github.com/OCA/vertical-association.git`
 
+## Helpdesk
+
+Incluye los módulos
+
+- helpdesk_mgmt  
+- helpdesk_mgmt_merge  
+- helpdesk_mgmt_portal_follower  
+- helpdesk_mgmt_project  
+- helpdesk_mgmt_rating  
+- helpdesk_mgmt_timesheet  
+- helpdesk_motive  
+- helpdesk_portal_priority  
+- helpdesk_portal_restriction  
+- helpdesk_product  
+- helpdesk_ticket_close_inactive  
+- helpdesk_ticket_open_tab  
+- helpdesk_ticket_partner_response  
+- helpdesk_ticket_related  
+- helpdesk_type  
+
+Para incorporar todo el módulo 
+
+> `git submodule add -b 16.0 https://github.com/OCA/helpdesk.git`
+
+## Odoo Union
+
+Conjunto de modulos para sindicatos
+
+- union_affiliation  
+- union_benefit_request  
+- union_contribution  
+- union_school_position  
+
+Para incorporar todo el módulo 
+
+> `git submodule add -b 16.0 http://gitlab.mueve.net.ar/odoo-mueve/odoo-union`
+
+
 
 # Apéndice: Utilización de submódulos
 
