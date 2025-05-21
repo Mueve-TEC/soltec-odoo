@@ -10,7 +10,7 @@ RUN apt-get install python3-m2crypto -y
 RUN apt-get install python3-xlrd python3-chardet python3-ofxparse -y
 COPY openssl.cnf /etc/ssl/openssl.cnf
 COPY ir_actions_report_templates.xml /usr/lib/python3/dist-packages/odoo/addons/sale/report/ir_actions_report_templates.xml
-COPY odoo.conf /etc/odoo/odoo.conf
+#COPY odoo.conf /etc/odoo/odoo.conf
 COPY ./fixes/account_move_tax.py /mnt/extra-addons/account_move_tax/models/
 
 USER odoo
