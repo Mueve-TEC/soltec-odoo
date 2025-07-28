@@ -1,6 +1,6 @@
 [submodule "submodules/odoo-argentina"]
 	path = submodules/odoo-argentina
-	url = https://github.com/a2systems/odoo-argentina.git
+	url = https://github.com/Mueve-TEC/odoo-argentina.git
 	branch = 16.0
 [submodule "submodules/account-reconcile"]
 	path = submodules/account-reconcile
@@ -32,7 +32,7 @@
 	branch = 16.0
 [submodule "submodules/odoo-union"]
 	path = submodules/odoo-union
-	url = http://gitlab.mueve.net.ar/odoo-mueve/odoo-union
+	url = https://github.com/Mueve-TEC/odoo-union/
 	branch = 16.0
 [submodule "submodules/helpdesk"]
 	path = submodules/helpdesk
