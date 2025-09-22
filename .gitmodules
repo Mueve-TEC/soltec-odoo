@@ -38,3 +38,6 @@
 	path = submodules/helpdesk
 	url = https://github.com/OCA/helpdesk
 	branch = 16.0
+[submodule "submodules/odoo-website-fixes"]
+	path = submodules/odoo-website-fixes
+	url = https://github.com/Mueve-TEC/odoo-website-fixes
