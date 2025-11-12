@@ -12,6 +12,7 @@ REPO_PATH_REPORTING=./submodules/reporting-engine
 REPO_PATH_UNION=./submodules/odoo-union
 REPO_PATH_HELPDESK=./submodules/helpdesk
 REPO_PATH_WEBFIX=./submodules/odoo-website-fixes
+REPO_PATH_SIPAGO=./submodules/payment_sipago
 DEST_PATH=./modules_from_github
 EXCLUSION_FILE=./exclusion_list.txt
 
@@ -60,6 +61,11 @@ fi
 
 if [ ! -d "$REPO_PATH_WEBFIX" ]; then
     echo "Error: El directorio del repositorio '$REPO_PATH_WEBFIX' no existe."
+    exit 1
+fi
+
+if [ ! -d "$REPO_PATH_SIPAGO" ]; then
+    echo "Error: El directorio del repositorio '$REPO_PATH_SIPAGO' no existe."
     exit 1
 fi
 
@@ -167,6 +173,14 @@ if [ $? -eq 0 ]; then
     echo "Directorios copiados exitosamente de '$REPO_PATH_WEBFIX' a '$DEST_PATH'."
 else
     echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_WEBFIX'."
+    exit 1
+fi
+
+rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_SIPAGO"/ "$DEST_PATH"
+if [ $? -eq 0 ]; then
+    echo "Directorios copiados exitosamente de '$REPO_PATH_SIPAGO' a '$DEST_PATH'."
+else
+    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_SIPAGO'."
     exit 1
 fi
 
