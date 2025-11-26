@@ -1,187 +1,58 @@
 #!/bin/bash
 
-# Asignar argumentos a variables
-REPO_PATH_OA=./submodules/odoo-argentina
-REPO_PATH_AFT=./submodules/account-financial-tools
-REPO_PATH_AP=./submodules/account-payment
-REPO_PATH_RECONCILE=./submodules/account-reconcile
-REPO_PATH_IMPORT_BANK=./submodules/bank-statement-import
-REPO_PATH_ODOO_MATES=./submodules/odooapps
-REPO_PATH_MEMBER=./submodules/vertical-association
-REPO_PATH_REPORTING=./submodules/reporting-engine
-REPO_PATH_UNION=./submodules/odoo-union
-REPO_PATH_HELPDESK=./submodules/helpdesk
-REPO_PATH_WEBFIX=./submodules/odoo-website-fixes
-REPO_PATH_SIPAGO=./submodules/payment_sipago
-DEST_PATH=./modules_from_github
-EXCLUSION_FILE=./exclusion_list.txt
+set -euo pipefail
 
-# Verificar si el directorio del repositorio existe
-if [ ! -d "$REPO_PATH_OA" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_OA' no existe."
-    exit 1
-fi
-if [ ! -d "$REPO_PATH_AFT" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_AFT' no existe."
-    exit 1
-fi
-if [ ! -d "$REPO_PATH_AP" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_AP' no existe."
-    exit 1
-fi
-if [ ! -d "$REPO_PATH_RECONCILE" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_RECONCILE' no existe."
-    exit 1
-fi
-if [ ! -d "$REPO_PATH_IMPORT_BANK" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_IMPORT_BANK' no existe."
-    exit 1
-fi
-if [ ! -d "$REPO_PATH_ODOO_MATES" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_ODOO_MATES' no existe."
-    exit 1
-fi
-if [ ! -d "$REPO_PATH_MEMBER" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_MEMBER' no existe."
-    exit 1
-fi
-if [ ! -d "$REPO_PATH_REPORTING" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_REPORTING' no existe."
-    exit 1
-fi
-if [ ! -d "$REPO_PATH_UNION" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_UNION' no existe."
-    exit 1
-fi
+REPO_PATHS=(
+    "./submodules/odoo-argentina"
+    "./submodules/account-financial-tools"
+    "./submodules/account-payment"
+    "./submodules/account-reconcile"
+    "./submodules/bank-statement-import"
+    "./submodules/odooapps"
+    "./submodules/vertical-association"
+    "./submodules/reporting-engine"
+    "./submodules/odoo-union"
+    "./submodules/helpdesk"
+    "./submodules/odoo-website-fixes"
+    "./submodules/payment_sipago"
+)
 
-if [ ! -d "$REPO_PATH_HELPDESK" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_HELPDESK' no existe."
-    exit 1
-fi
 
-if [ ! -d "$REPO_PATH_WEBFIX" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_WEBFIX' no existe."
-    exit 1
-fi
+DEST_PATH="./modules_from_github"
+EXCLUSION_FILE="./exclusion_list.txt"
 
-if [ ! -d "$REPO_PATH_SIPAGO" ]; then
-    echo "Error: El directorio del repositorio '$REPO_PATH_SIPAGO' no existe."
-    exit 1
-fi
 
-# Crear el directorio de destino si no existe
-if [ ! -d "$DEST_PATH" ]; then
-    echo "El directorio de destino '$DEST_PATH' no existe. Creando..."
-    mkdir -p "$DEST_PATH"
-    if [ $? -ne 0 ]; then
-        echo "Error: No se pudo crear el directorio de destino '$DEST_PATH'."
-        exit 1
-    fi
-fi
+log_info() {
+    echo "[INFO] $1"
+}
 
-# Verificar si el archivo de exclusión existe
+log_error() {
+    echo "[ERROR] $1" >&2 # >&2 redirige los errores a la salida de error estándar
+}
+
+
+
+log_info "Iniciando el proceso de sincronización de módulos..."
+
 if [ ! -f "$EXCLUSION_FILE" ]; then
-    echo "Error: El archivo de exclusión '$EXCLUSION_FILE' no existe."
+    log_error "El archivo de exclusión '$EXCLUSION_FILE' no existe."
     exit 1
 fi
 
-# Copiar solo los directorios usando rsync con exclusión
-
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_ODOO_MATES"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_ODOO_MATES' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_ODOO_MATES'."
-    exit 1
-fi
-
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_RECONCILE"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_RECONCILE' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_RECONCILE'."
-    exit 1
-fi
-
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_IMPORT_BANK"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_IMPORT_BANK' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_IMPORT_BANK'."
-    exit 1
-fi
+log_info "Asegurando que el directorio de destino '$DEST_PATH' existe..."
+mkdir -p "$DEST_PATH"
 
 
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_MEMBER"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_MEMBER' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_MEMBER'."
-    exit 1
-fi
+for repo_path in "${REPO_PATHS[@]}"; do    
+    if [ ! -d "$repo_path" ]; then
+        log_error "El directorio del repositorio '$repo_path' no existe. Abortando."
+        exit 1 
+    fi
 
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_AFT"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_AFT' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_AFT'."
-    exit 1
-fi
+    log_info "Procesando repositorio: $(basename "$repo_path")..."       
+    rsync -av --exclude-from="$EXCLUSION_FILE" --include='*/' "$repo_path"/ "$DEST_PATH"    
+    log_info "Sincronización de '$(basename "$repo_path")' completada."
+done
 
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_AP"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_AP' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_AP'."
-    exit 1
-fi
-
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_OA"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_OA' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_OA'."
-    exit 1
-fi
-
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_REPORTING"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_REPORTING' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_REPORTING'."
-    exit 1
-fi
-
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_UNION"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_UNION' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_UNION'."
-    exit 1
-fi
-
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_HELPDESK"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_HELPDESK' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_HELPDESK'."
-    exit 1
-fi
-
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_WEBFIX"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_WEBFIX' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_WEBFIX'."
-    exit 1
-fi
-
-rsync -av --exclude-from="$EXCLUSION_FILE" --include '*/' "$REPO_PATH_SIPAGO"/ "$DEST_PATH"
-if [ $? -eq 0 ]; then
-    echo "Directorios copiados exitosamente de '$REPO_PATH_SIPAGO' a '$DEST_PATH'."
-else
-    echo "Error: Ocurrió un problema al copiar los directorios de '$REPO_PATH_SIPAGO'."
-    exit 1
-fi
-
+log_info "Todos los repositorios han sido procesados exitosamente."
 exit 0
