@@ -13,7 +13,7 @@ COPY ir_actions_report_templates.xml /usr/lib/python3/dist-packages/odoo/addons/
 #COPY ./fixes/account_move_tax.py /mnt/extra-addons/account_move_tax/models/
 
 USER odoo
-COPY COPY ./requirements.txt /tmp/requirements.txt
+COPY ./requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 
