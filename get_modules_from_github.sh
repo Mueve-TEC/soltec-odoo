@@ -13,8 +13,8 @@ REPO_PATHS=(
     "./submodules/reporting-engine"
     "./submodules/odoo-union"
     "./submodules/helpdesk"
-    "./submodules/odoo-website-fixes"
-    "./submodules/payment_sipago"
+   # "./submodules/odoo-website-fixes"
+   # "./submodules/payment_sipago"
 )
 
 
