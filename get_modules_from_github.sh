@@ -4,6 +4,7 @@ set -euo pipefail
 
 REPO_PATHS=(
     "./submodules/odoo-argentina"
+    "./submodules/odoo-argentina-ce"
     "./submodules/account-financial-tools"
     "./submodules/account-payment"
     "./submodules/account-reconcile"
