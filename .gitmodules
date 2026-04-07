@@ -1,7 +1,3 @@
-[submodule "submodules/odoo-argentina"]
-	path = submodules/odoo-argentina
-	url = https://github.com/Mueve-TEC/odoo-argentina.git
-	branch = 18.0
 [submodule "submodules/account-reconcile"]
 	path = submodules/account-reconcile
 	url = https://github.com/OCA/account-reconcile.git
