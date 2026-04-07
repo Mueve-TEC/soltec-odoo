@@ -41,3 +41,11 @@
 	path = submodules/payment_sipago
 	url = https://github.com/Mueve-TEC/payment_sipago
 	branch = 18.0
+[submodule "submodules/odoo-argentina"]
+	path = submodules/odoo-argentina
+	url = https://github.com/ingadhoc/odoo-argentina
+	branch = 18.0
+[submodule "submodules/odoo-argentina-ce"]
+	path = submodules/odoo-argentina-ce
+	url = https://github.com/ingadhoc/odoo-argentina-ce
+	branch = 18.0
