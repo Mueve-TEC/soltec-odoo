@@ -4,7 +4,7 @@ Imagen gestión Odoo community en el marco del programa SolTec de Mueve para la 
 
 ## Descarga
 
-> `git clone --recursive -b 16.0 https://github.com/Mueve-TEC/soltec-odoo.git`
+> `git clone --recursive -b 18.0 https://github.com/Mueve-TEC/soltec-odoo.git`
 
 > `cd soltec-odoo`
 
@@ -36,8 +36,8 @@ Se debe ingresar al directorio `testing`
 
 > `cd testing/`
 
-Una vez allí, procedemos a revisar los archivos `deploy.sh` y `docker-compose.yml` para constatar que la imagen referenciada sea la correcta. Finalmente, ejecutamos el script de despliegue
+Una vez allí, procedemos a revisar el archivo `docker-compose.yml` para constatar que la imagen referenciada sea la correcta. Finalmente, ejecutamos 
 
-> `./deploy.sh`
+> `docker compose up -d`
 
 Y ello levantará un stack con una instancia de odoo + una instancia de postgres
