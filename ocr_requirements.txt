@@ -1,0 +1,4 @@
+pyzbar
+pdf2image
+Pillow
+numpy

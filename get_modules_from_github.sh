@@ -15,6 +15,7 @@ REPO_PATHS=(
     "./submodules/helpdesk"
     "./submodules/odoo-website-fixes"
     "./submodules/payment_sipago"
+    "./submodules/odoo-ocr"
 )
 
 
