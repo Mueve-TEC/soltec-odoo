@@ -45,3 +45,7 @@
 	path = submodules/payment_sipago
 	url = https://github.com/Mueve-TEC/payment_sipago
 	branch = 16.0
+[submodule "submodules/odoo-ocr"]
+	path = submodules/odoo-ocr
+	url = https://github.com/Mueve-TEC/odoo-ocr/
+	branch = 16.0
