@@ -10,10 +10,10 @@ RUN apt-get update && \
         python3-m2crypto \
         python3-xlrd \
         python3-chardet \
-        python3-ofxparse && \
+        python3-ofxparse \
         libzbar0 \
         poppler-utils \
-    rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/*
 COPY openssl.cnf /etc/ssl/openssl.cnf
 COPY ir_actions_report_templates.xml /usr/lib/python3/dist-packages/odoo/addons/sale/report/ir_actions_report_templates.xml
 COPY ./ocr_requirements.txt /tmp/ocr_requirements.txt
@@ -25,7 +25,7 @@ RUN pip install --no-cache-dir uv \
 
 USER odoo
 COPY ./requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt \
-    && rm -f /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+    
 
 
