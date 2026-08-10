@@ -1,23 +1,22 @@
-##########################
+# Usar la imagen base de Odoo v19
+FROM odoo:19.0
 
-FROM odoo:18.0
+# Deps externas de l10n_ar_factura_qr (escaneo de QR ARCA en facturas):
+#   - libzbar0 + pyzbar: decode de códigos QR
+#   - poppler-utils + pdf2image: conversión de PDF a imagen
+#   - numpy: procesamiento de imágenes (requerido por pyzbar/Pillow)
+# La imagen base no incluye estas dependencias; instalarlas aquí evita el
+# error "Hay una dependencia externa sin resolver: pyzbar" al instalar el módulo.
 USER root
-RUN apt-get update && apt-get install git -y
-RUN apt-get install python3-m2crypto -y
-RUN apt-get install python3-xlrd python3-chardet python3-ofxparse -y
-COPY ./requirements.txt /tmp/requirements.txt
-COPY openssl.cnf /etc/ssl/openssl.cnf
-RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=/usr/local/bin sh
-RUN uv pip install --system --break-system-packages -r /tmp/requirements.txt
-COPY odoo.conf /etc/odoo/odoo.conf
-
-# Parchear incompatibilidades con Python 3.12 y dar permisos al cache de pyafipws
-RUN find /usr/local/lib/python3.12/dist-packages/pysimplesoap/ -name "*.py" -exec \
-    sed -i 's/inspect\.getargspec/inspect.getfullargspec/g' {} \; \
-    && find /usr/local/lib/python3.12/dist-packages/pyafipws/ -name "*.py" -exec \
-    sed -i 's/SafeConfigParser/RawConfigParser/g' {} \; \
-    && mkdir -p /usr/local/lib/python3.12/dist-packages/pyafipws/cache \
-    && chmod -R 777 /usr/local/lib/python3.12/dist-packages/pyafipws/cache
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        libzbar0 \
+        poppler-utils \
+    && rm -rf /var/lib/apt/lists/*
+# La imagen base de Odoo usa un Python "externally-managed" (PEP 668), por lo
+# que pip exige --break-system-packages para instalar en el entorno del sistema.
+RUN pip install --break-system-packages --no-cache-dir \
+        pyzbar>=0.1.9 \
+        pdf2image>=1.16.3 \
+        numpy>=1.21.0
 USER odoo
-COPY --chown=odoo:odoo ./modules_from_github /mnt/extra-addons
-COPY ./fixes/checks_to_date_view.xml /mnt/extra-addons/l10n_latam_check_ux/wizards/
