@@ -1,51 +1,51 @@
 [submodule "submodules/account-reconcile"]
 	path = submodules/account-reconcile
 	url = https://github.com/OCA/account-reconcile.git
-	branch = 18.0
+	branch = 19.0
 [submodule "submodules/odooapps"]
 	path = submodules/odooapps
 	url = https://github.com/odoomates/odooapps.git
-	branch = 18.0
+	branch = 19.0
 [submodule "submodules/vertical-association"]
 	path = submodules/vertical-association
 	url = https://github.com/OCA/vertical-association.git
-	branch = 18.0
+	branch = 19.0
 [submodule "submodules/account-financial-tools"]
 	path = submodules/account-financial-tools
 	url = https://github.com/ingadhoc/account-financial-tools.git
-	branch = 18.0
+	branch = 19.0
 [submodule "submodules/account-payment"]
 	path = submodules/account-payment
 	url = https://github.com/ingadhoc/account-payment.git
-	branch = 18.0
+	branch = 19.0
 [submodule "submodules/bank-statement-import"]
 	path = submodules/bank-statement-import
 	url = https://github.com/OCA/bank-statement-import.git
-	branch = 18.0
+	branch = 19.0
 [submodule "submodules/reporting-engine"]
 	path = submodules/reporting-engine
 	url = https://github.com/OCA/reporting-engine
-	branch = 18.0
+	branch = 19.0
 [submodule "submodules/odoo-union"]
 	path = submodules/odoo-union
 	url = https://github.com/Mueve-TEC/odoo-union/
-	branch = 18.0
+	branch = 19.0
 [submodule "submodules/helpdesk"]
 	path = submodules/helpdesk
 	url = https://github.com/OCA/helpdesk
-	branch = 18.0
+	branch = 19.0
 [submodule "submodules/odoo-website-fixes"]
 	path = submodules/odoo-website-fixes
 	url = https://github.com/Mueve-TEC/odoo-website-fixes
 [submodule "submodules/payment_sipago"]
 	path = submodules/payment_sipago
 	url = https://github.com/Mueve-TEC/payment_sipago
-	branch = 18.0
+	branch = 19.0
 [submodule "submodules/odoo-argentina"]
 	path = submodules/odoo-argentina
 	url = https://github.com/ingadhoc/odoo-argentina
-	branch = 18.0
+	branch = 19.0
 [submodule "submodules/odoo-argentina-ce"]
 	path = submodules/odoo-argentina-ce
 	url = https://github.com/ingadhoc/odoo-argentina-ce
-	branch = 18.0
+	branch = 19.0
