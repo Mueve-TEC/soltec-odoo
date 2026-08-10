@@ -19,4 +19,9 @@ RUN pip install --break-system-packages --no-cache-dir \
         pyzbar>=0.1.9 \
         pdf2image>=1.16.3 \
         numpy>=1.21.0
+COPY odoo.conf /etc/odoo/odoo.conf
+
 USER odoo
+COPY --chown=odoo:odoo ./modules_from_github /mnt/extra-addons
+COPY ./requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt

@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   web:
-    image: muevetec/soltec-odoo:18.0.0-dev    
+    image: muevetec/soltec-odoo:19.0.1-dev    
     depends_on:
       - mydb
     ports:

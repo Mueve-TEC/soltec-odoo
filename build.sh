@@ -2,7 +2,7 @@
 ./get_modules_from_github.sh
 
 IMAGENAME="muevetec/soltec-odoo"
-IMAGEVERSION="18.0.1-dev"
+IMAGEVERSION="19.0.2-dev"
 
 echo "Construyendo: $IMAGENAME:$IMAGEVERSION"
 
