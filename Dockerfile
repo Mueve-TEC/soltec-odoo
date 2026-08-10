@@ -12,6 +12,7 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         libzbar0 \
         poppler-utils \
+        git \
     && rm -rf /var/lib/apt/lists/*
 # La imagen base de Odoo usa un Python "externally-managed" (PEP 668), por lo
 # que pip exige --break-system-packages para instalar en el entorno del sistema.
@@ -20,8 +21,10 @@ RUN pip install --break-system-packages --no-cache-dir \
         pdf2image>=1.16.3 \
         numpy>=1.21.0
 COPY odoo.conf /etc/odoo/odoo.conf
+COPY ./requirements.txt /tmp/requirements.txt
+RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=/usr/local/bin sh
+RUN uv pip install --system --break-system-packages -r /tmp/requirements.txt
 
 USER odoo
-COPY --chown=odoo:odoo ./modules_from_github /mnt/extra-addons
-COPY ./requirements.txt /tmp/requirements.txt
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+COPY --chown=odoo:odoo ./custom-addons /mnt/extra-addons
+
