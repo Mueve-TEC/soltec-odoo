@@ -4,7 +4,7 @@ Imagen gestión Odoo community en el marco del programa SolTec de Mueve para la 
 
 ## Descarga
 
-> `git clone --recursive -b 18.0 https://github.com/Mueve-TEC/soltec-odoo.git`
+> `git clone --recursive -b 19.0 https://github.com/Mueve-TEC/soltec-odoo.git`
 
 > `cd soltec-odoo`
 
@@ -23,7 +23,7 @@ Una vez q se ejecuta el script `build.sh`:
 > `./build.sh`
 
 se producirá lo siguiente:
-* Se creará el directorio `modules_from_github` y se colocarán dentro del mismo los módulos de los distintos repositorios github.
+* Se creará el directorio `custom-addons` y se colocarán dentro del mismo los módulos de los distintos repositorios github.
 * Se ejecutará el comando `docker build` para la construcción de la imagen en base a las directivas contenidas en el `Dockerfile`
 
 Llegado a este punto, estará generada la imagen y lista para su uso
