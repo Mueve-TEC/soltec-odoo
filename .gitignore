@@ -163,6 +163,7 @@ cython_debug/
 
 
 modules_from_github/
+custom-addons/
 
 venv/ 
 
