@@ -21,6 +21,7 @@ RUN pip install --break-system-packages --no-cache-dir \
         pdf2image>=1.16.3 \
         numpy>=1.21.0
 COPY odoo.conf /etc/odoo/odoo.conf
+COPY openssl.cnf /etc/ssl/openssl.cnf
 COPY ./requirements.txt /tmp/requirements.txt
 RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=/usr/local/bin sh
 RUN uv pip install --system --break-system-packages -r /tmp/requirements.txt

@@ -3,7 +3,7 @@
 ./copy_addons.sh
 
 IMAGENAME="muevetec/soltec-odoo"
-IMAGEVERSION="19.0.3-dev"
+IMAGEVERSION="19.0.7-dev"
 
 echo "Construyendo: $IMAGENAME:$IMAGEVERSION"
 
