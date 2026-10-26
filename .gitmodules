@@ -29,6 +29,7 @@
 [submodule "submodules/odoo-website-fixes"]
 	path = submodules/odoo-website-fixes
 	url = https://github.com/Mueve-TEC/odoo-website-fixes
+	branch = 19.0
 [submodule "submodules/payment_sipago"]
 	path = submodules/payment_sipago
 	url = https://github.com/Mueve-TEC/payment_sipago
