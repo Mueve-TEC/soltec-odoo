@@ -40,5 +40,5 @@
 	branch = 19.0
 [submodule "submodules/odoo-ocr"]
 	path = submodules/odoo-ocr
-	url = https://github.com/Mueve-TEC/odoo-ocr
+	url = https://github.com/Mueve-TEC/odoo-argentina-invoice-ocr
 	branch = 19.0
